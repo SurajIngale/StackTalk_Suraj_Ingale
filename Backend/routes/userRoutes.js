@@ -1,10 +1,7 @@
 import express from "express";
 import User from "../models/userModels.js";
-
-
 const router = express.Router();
 
-// Create or Fetch User
 router.post("/", async (req, res) => {
   try {
     const { username } = req.body;
@@ -21,7 +18,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Get Questions Asked by a User
 router.get("/:username/questions", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username }).populate("questions");
